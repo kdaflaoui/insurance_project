@@ -30,3 +30,4 @@ Une serie de formulaires pour saisir les informations du client, les information
 
 
 - Page de confirmation 
+![final page](https://user-images.githubusercontent.com/26189475/85657487-199cd880-b680-11ea-9100-333846a44651.jpg)
