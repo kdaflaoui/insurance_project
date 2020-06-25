@@ -1,8 +1,8 @@
 # insurance_project
 Une application qui permet aux clients de faire une soumission d'assurance auto ou habitation et leur donner une estimation mensuelle à payer.
 Fiche technique : 
-  - Cette application est developpée en .NET => ASP.NET, Bootstrap 
-  - Sql server comme base de données
+  - Cette application est developpée en .NET => ASP.NET MVC, Bootstrap 
+  - Sql Server comme base de données
   - Entity framework (ORM)
   - Une couche Data Access Layer : ADO.NET
   - Une couche Web service webapi 
