@@ -6,7 +6,7 @@ Fiche technique :
   - Entity framework (ORM)
   - Une couche Web service webapi 
   - Requete HTTP (Get, Post, Put, Delete), cela permet au client de créer une soumission, apercevoir ses soimission, modifier et / ou supprimer une soumission.
-  - Une couvhe Repository (à developper!!)
+  - Une couche Repository (à developper!!)
   
  Diagramme de classes : 
  
