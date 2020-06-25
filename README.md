@@ -12,4 +12,14 @@ Fiche technique :
 ![diagramme de classe](https://user-images.githubusercontent.com/26189475/85656388-b1012c00-b67e-11ea-8645-a5e9be15da9f.jpg)
 
 
-Home page : une serie de formulaire pour saisir les informations du client, les information de l'assurance choisi : 
+Une serie de formulaires pour saisir les informations du client, les information de l'assurance choisi : 
+
+- Home page :
+
+![home page](https://user-images.githubusercontent.com/26189475/85656902-54524100-b67f-11ea-9e7b-b3f19a83b180.jpg)
+
+- Auto page
+
+- Coordonnées page
+
+- Page de confirmation 
