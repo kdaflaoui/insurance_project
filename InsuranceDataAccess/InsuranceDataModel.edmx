@@ -1,0 +1,434 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="InsuranceDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="__EFMigrationsHistory">
+          <Key>
+            <PropertyRef Name="MigrationId" />
+          </Key>
+          <Property Name="MigrationId" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="ProductVersion" Type="nvarchar" MaxLength="32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Addresses">
+          <Key>
+            <PropertyRef Name="AddressID" />
+          </Key>
+          <Property Name="AddressID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AddressLine" Type="nvarchar(max)" />
+          <Property Name="PostalCode" Type="nvarchar(max)" />
+          <Property Name="City" Type="nvarchar(max)" />
+          <Property Name="Country" Type="nvarchar(max)" />
+          <Property Name="Laltitude" Type="nvarchar(max)" />
+          <Property Name="Longitude" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Autos">
+          <Key>
+            <PropertyRef Name="AutoID" />
+          </Key>
+          <Property Name="AutoID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Year" Type="nvarchar(max)" />
+          <Property Name="Marque" Type="nvarchar(max)" />
+          <Property Name="Model" Type="nvarchar(max)" />
+          <Property Name="Vehicle_Nbre" Type="int" Nullable="false" />
+          <Property Name="IsLeqsedOrFinanced" Type="nvarchar(max)" />
+          <Property Name="Vehicle_Use" Type="nvarchar(max)" />
+          <Property Name="KilometersPerYear" Type="float" Nullable="false" />
+          <Property Name="Infraction_Nbre" Type="int" Nullable="false" />
+          <Property Name="Accident_Nbre" Type="int" Nullable="false" />
+          <Property Name="Claim_Type" Type="nvarchar(max)" />
+          <Property Name="Date_Of_Claim" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="Estimation_Per_Month" Type="float" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Contacts">
+          <Key>
+            <PropertyRef Name="ContactID" />
+          </Key>
+          <Property Name="ContactID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Home_Phone" Type="nvarchar(max)" />
+          <Property Name="Mobile_Phone" Type="nvarchar(max)" />
+          <Property Name="Email_Address" Type="nvarchar(max)" />
+          <Property Name="Contact_Preferences" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Customers">
+          <Key>
+            <PropertyRef Name="CustomerID" />
+          </Key>
+          <Property Name="CustomerID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="First_Name" Type="nvarchar(max)" />
+          <Property Name="Last_Name" Type="nvarchar(max)" />
+          <Property Name="Civility" Type="nvarchar(max)" />
+          <Property Name="Birthdate" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="AddressID" Type="int" />
+          <Property Name="HabitationID" Type="int" />
+          <Property Name="AutoID" Type="int" />
+          <Property Name="Type_Of_insurance" Type="nvarchar(max)" />
+          <Property Name="Sexe" Type="nvarchar(max)" />
+          <Property Name="ContactID" Type="int" />
+        </EntityType>
+        <EntityType Name="Habitations">
+          <Key>
+            <PropertyRef Name="HabitationID" />
+          </Key>
+          <Property Name="HabitationID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Unit_Nbre" Type="int" Nullable="false" />
+          <Property Name="Protect_Device" Type="nvarchar(max)" />
+          <Property Name="isHadPropertyInsurance" Type="bit" Nullable="false" />
+          <Property Name="ExpiryPropertyInsurance" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="Claims_Nbre" Type="nvarchar(max)" />
+          <Property Name="Claim_Type" Type="nvarchar(max)" />
+          <Property Name="Date_Of_Claim" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="SewerBackupInsurance" Type="bit" Nullable="false" />
+          <Property Name="Estimation_Per_Month" Type="float" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_CustomerS_Addresses_AddressID">
+          <End Role="Addresses" Type="Self.Addresses" Multiplicity="0..1" />
+          <End Role="Customers" Type="Self.Customers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Addresses">
+              <PropertyRef Name="AddressID" />
+            </Principal>
+            <Dependent Role="Customers">
+              <PropertyRef Name="AddressID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CustomerS_Autos_AutoID">
+          <End Role="Autos" Type="Self.Autos" Multiplicity="0..1" />
+          <End Role="Customers" Type="Self.Customers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Autos">
+              <PropertyRef Name="AutoID" />
+            </Principal>
+            <Dependent Role="Customers">
+              <PropertyRef Name="AutoID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CustomerS_ContactS_ContactID">
+          <End Role="Contacts" Type="Self.Contacts" Multiplicity="0..1" />
+          <End Role="Customers" Type="Self.Customers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Contacts">
+              <PropertyRef Name="ContactID" />
+            </Principal>
+            <Dependent Role="Customers">
+              <PropertyRef Name="ContactID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CustomerS_Habitations_HabitationID">
+          <End Role="Habitations" Type="Self.Habitations" Multiplicity="0..1" />
+          <End Role="Customers" Type="Self.Customers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Habitations">
+              <PropertyRef Name="HabitationID" />
+            </Principal>
+            <Dependent Role="Customers">
+              <PropertyRef Name="HabitationID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="InsuranceDBModelStoreContainer">
+          <EntitySet Name="__EFMigrationsHistory" EntityType="Self.__EFMigrationsHistory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Addresses" EntityType="Self.Addresses" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Autos" EntityType="Self.Autos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Contacts" EntityType="Self.Contacts" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Customers" EntityType="Self.Customers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Habitations" EntityType="Self.Habitations" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_CustomerS_Addresses_AddressID" Association="Self.FK_CustomerS_Addresses_AddressID">
+            <End Role="Addresses" EntitySet="Addresses" />
+            <End Role="Customers" EntitySet="Customers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CustomerS_Autos_AutoID" Association="Self.FK_CustomerS_Autos_AutoID">
+            <End Role="Autos" EntitySet="Autos" />
+            <End Role="Customers" EntitySet="Customers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CustomerS_ContactS_ContactID" Association="Self.FK_CustomerS_ContactS_ContactID">
+            <End Role="Contacts" EntitySet="Contacts" />
+            <End Role="Customers" EntitySet="Customers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CustomerS_Habitations_HabitationID" Association="Self.FK_CustomerS_Habitations_HabitationID">
+            <End Role="Habitations" EntitySet="Habitations" />
+            <End Role="Customers" EntitySet="Customers" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="InsuranceDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="C__EFMigrationsHistory">
+          <Key>
+            <PropertyRef Name="MigrationId" />
+          </Key>
+          <Property Name="MigrationId" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ProductVersion" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Addresses">
+          <Key>
+            <PropertyRef Name="AddressID" />
+          </Key>
+          <Property Name="AddressID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AddressLine" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PostalCode" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="City" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Country" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Laltitude" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Longitude" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Customers" Relationship="Self.FK_CustomerS_Addresses_AddressID" FromRole="Addresses" ToRole="Customers" />
+        </EntityType>
+        <EntityType Name="Autos">
+          <Key>
+            <PropertyRef Name="AutoID" />
+          </Key>
+          <Property Name="AutoID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Year" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Marque" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Model" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Vehicle_Nbre" Type="Int32" Nullable="false" />
+          <Property Name="IsLeqsedOrFinanced" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Vehicle_Use" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="KilometersPerYear" Type="Double" Nullable="false" />
+          <Property Name="Infraction_Nbre" Type="Int32" Nullable="false" />
+          <Property Name="Accident_Nbre" Type="Int32" Nullable="false" />
+          <Property Name="Claim_Type" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Date_Of_Claim" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="Estimation_Per_Month" Type="Double" Nullable="false" />
+          <NavigationProperty Name="Customers" Relationship="Self.FK_CustomerS_Autos_AutoID" FromRole="Autos" ToRole="Customers" />
+        </EntityType>
+        <EntityType Name="Contacts">
+          <Key>
+            <PropertyRef Name="ContactID" />
+          </Key>
+          <Property Name="ContactID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Home_Phone" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Mobile_Phone" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Email_Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Contact_Preferences" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Customers" Relationship="Self.FK_CustomerS_ContactS_ContactID" FromRole="Contacts" ToRole="Customers" />
+        </EntityType>
+        <EntityType Name="Customers">
+          <Key>
+            <PropertyRef Name="CustomerID" />
+          </Key>
+          <Property Name="CustomerID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="First_Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Last_Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Civility" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Birthdate" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="AddressID" Type="Int32" />
+          <Property Name="HabitationID" Type="Int32" />
+          <Property Name="AutoID" Type="Int32" />
+          <Property Name="Type_Of_insurance" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Sexe" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ContactID" Type="Int32" />
+          <NavigationProperty Name="Addresses" Relationship="Self.FK_CustomerS_Addresses_AddressID" FromRole="Customers" ToRole="Addresses" />
+          <NavigationProperty Name="Autos" Relationship="Self.FK_CustomerS_Autos_AutoID" FromRole="Customers" ToRole="Autos" />
+          <NavigationProperty Name="Contacts" Relationship="Self.FK_CustomerS_ContactS_ContactID" FromRole="Customers" ToRole="Contacts" />
+          <NavigationProperty Name="Habitations" Relationship="Self.FK_CustomerS_Habitations_HabitationID" FromRole="Customers" ToRole="Habitations" />
+        </EntityType>
+        <EntityType Name="Habitations">
+          <Key>
+            <PropertyRef Name="HabitationID" />
+          </Key>
+          <Property Name="HabitationID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Unit_Nbre" Type="Int32" Nullable="false" />
+          <Property Name="Protect_Device" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="isHadPropertyInsurance" Type="Boolean" Nullable="false" />
+          <Property Name="ExpiryPropertyInsurance" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="Claims_Nbre" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Claim_Type" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Date_Of_Claim" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="SewerBackupInsurance" Type="Boolean" Nullable="false" />
+          <Property Name="Estimation_Per_Month" Type="Double" Nullable="false" />
+          <NavigationProperty Name="Customers" Relationship="Self.FK_CustomerS_Habitations_HabitationID" FromRole="Habitations" ToRole="Customers" />
+        </EntityType>
+        <Association Name="FK_CustomerS_Addresses_AddressID">
+          <End Role="Addresses" Type="Self.Addresses" Multiplicity="0..1" />
+          <End Role="Customers" Type="Self.Customers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Addresses">
+              <PropertyRef Name="AddressID" />
+            </Principal>
+            <Dependent Role="Customers">
+              <PropertyRef Name="AddressID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CustomerS_Autos_AutoID">
+          <End Role="Autos" Type="Self.Autos" Multiplicity="0..1" />
+          <End Role="Customers" Type="Self.Customers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Autos">
+              <PropertyRef Name="AutoID" />
+            </Principal>
+            <Dependent Role="Customers">
+              <PropertyRef Name="AutoID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CustomerS_ContactS_ContactID">
+          <End Role="Contacts" Type="Self.Contacts" Multiplicity="0..1" />
+          <End Role="Customers" Type="Self.Customers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Contacts">
+              <PropertyRef Name="ContactID" />
+            </Principal>
+            <Dependent Role="Customers">
+              <PropertyRef Name="ContactID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CustomerS_Habitations_HabitationID">
+          <End Role="Habitations" Type="Self.Habitations" Multiplicity="0..1" />
+          <End Role="Customers" Type="Self.Customers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Habitations">
+              <PropertyRef Name="HabitationID" />
+            </Principal>
+            <Dependent Role="Customers">
+              <PropertyRef Name="HabitationID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="InsuranceDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="C__EFMigrationsHistory" EntityType="Self.C__EFMigrationsHistory" />
+          <EntitySet Name="Addresses" EntityType="Self.Addresses" />
+          <EntitySet Name="Autos" EntityType="Self.Autos" />
+          <EntitySet Name="Contacts" EntityType="Self.Contacts" />
+          <EntitySet Name="Customers" EntityType="Self.Customers" />
+          <EntitySet Name="Habitations" EntityType="Self.Habitations" />
+          <AssociationSet Name="FK_CustomerS_Addresses_AddressID" Association="Self.FK_CustomerS_Addresses_AddressID">
+            <End Role="Addresses" EntitySet="Addresses" />
+            <End Role="Customers" EntitySet="Customers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CustomerS_Autos_AutoID" Association="Self.FK_CustomerS_Autos_AutoID">
+            <End Role="Autos" EntitySet="Autos" />
+            <End Role="Customers" EntitySet="Customers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CustomerS_ContactS_ContactID" Association="Self.FK_CustomerS_ContactS_ContactID">
+            <End Role="Contacts" EntitySet="Contacts" />
+            <End Role="Customers" EntitySet="Customers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CustomerS_Habitations_HabitationID" Association="Self.FK_CustomerS_Habitations_HabitationID">
+            <End Role="Habitations" EntitySet="Habitations" />
+            <End Role="Customers" EntitySet="Customers" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="InsuranceDBModelStoreContainer" CdmEntityContainer="InsuranceDBEntities">
+          <EntitySetMapping Name="C__EFMigrationsHistory">
+            <EntityTypeMapping TypeName="InsuranceDBModel.C__EFMigrationsHistory">
+              <MappingFragment StoreEntitySet="__EFMigrationsHistory">
+                <ScalarProperty Name="MigrationId" ColumnName="MigrationId" />
+                <ScalarProperty Name="ProductVersion" ColumnName="ProductVersion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Addresses">
+            <EntityTypeMapping TypeName="InsuranceDBModel.Addresses">
+              <MappingFragment StoreEntitySet="Addresses">
+                <ScalarProperty Name="AddressID" ColumnName="AddressID" />
+                <ScalarProperty Name="AddressLine" ColumnName="AddressLine" />
+                <ScalarProperty Name="PostalCode" ColumnName="PostalCode" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="Laltitude" ColumnName="Laltitude" />
+                <ScalarProperty Name="Longitude" ColumnName="Longitude" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Autos">
+            <EntityTypeMapping TypeName="InsuranceDBModel.Autos">
+              <MappingFragment StoreEntitySet="Autos">
+                <ScalarProperty Name="AutoID" ColumnName="AutoID" />
+                <ScalarProperty Name="Year" ColumnName="Year" />
+                <ScalarProperty Name="Marque" ColumnName="Marque" />
+                <ScalarProperty Name="Model" ColumnName="Model" />
+                <ScalarProperty Name="Vehicle_Nbre" ColumnName="Vehicle_Nbre" />
+                <ScalarProperty Name="IsLeqsedOrFinanced" ColumnName="IsLeqsedOrFinanced" />
+                <ScalarProperty Name="Vehicle_Use" ColumnName="Vehicle_Use" />
+                <ScalarProperty Name="KilometersPerYear" ColumnName="KilometersPerYear" />
+                <ScalarProperty Name="Infraction_Nbre" ColumnName="Infraction_Nbre" />
+                <ScalarProperty Name="Accident_Nbre" ColumnName="Accident_Nbre" />
+                <ScalarProperty Name="Claim_Type" ColumnName="Claim_Type" />
+                <ScalarProperty Name="Date_Of_Claim" ColumnName="Date_Of_Claim" />
+                <ScalarProperty Name="Estimation_Per_Month" ColumnName="Estimation_Per_Month" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Contacts">
+            <EntityTypeMapping TypeName="InsuranceDBModel.Contacts">
+              <MappingFragment StoreEntitySet="Contacts">
+                <ScalarProperty Name="ContactID" ColumnName="ContactID" />
+                <ScalarProperty Name="Home_Phone" ColumnName="Home_Phone" />
+                <ScalarProperty Name="Mobile_Phone" ColumnName="Mobile_Phone" />
+                <ScalarProperty Name="Email_Address" ColumnName="Email_Address" />
+                <ScalarProperty Name="Contact_Preferences" ColumnName="Contact_Preferences" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Customers">
+            <EntityTypeMapping TypeName="InsuranceDBModel.Customers">
+              <MappingFragment StoreEntitySet="Customers">
+                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+                <ScalarProperty Name="First_Name" ColumnName="First_Name" />
+                <ScalarProperty Name="Last_Name" ColumnName="Last_Name" />
+                <ScalarProperty Name="Civility" ColumnName="Civility" />
+                <ScalarProperty Name="Birthdate" ColumnName="Birthdate" />
+                <ScalarProperty Name="AddressID" ColumnName="AddressID" />
+                <ScalarProperty Name="HabitationID" ColumnName="HabitationID" />
+                <ScalarProperty Name="AutoID" ColumnName="AutoID" />
+                <ScalarProperty Name="Type_Of_insurance" ColumnName="Type_Of_insurance" />
+                <ScalarProperty Name="Sexe" ColumnName="Sexe" />
+                <ScalarProperty Name="ContactID" ColumnName="ContactID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Habitations">
+            <EntityTypeMapping TypeName="InsuranceDBModel.Habitations">
+              <MappingFragment StoreEntitySet="Habitations">
+                <ScalarProperty Name="HabitationID" ColumnName="HabitationID" />
+                <ScalarProperty Name="Unit_Nbre" ColumnName="Unit_Nbre" />
+                <ScalarProperty Name="Protect_Device" ColumnName="Protect_Device" />
+                <ScalarProperty Name="isHadPropertyInsurance" ColumnName="isHadPropertyInsurance" />
+                <ScalarProperty Name="ExpiryPropertyInsurance" ColumnName="ExpiryPropertyInsurance" />
+                <ScalarProperty Name="Claims_Nbre" ColumnName="Claims_Nbre" />
+                <ScalarProperty Name="Claim_Type" ColumnName="Claim_Type" />
+                <ScalarProperty Name="Date_Of_Claim" ColumnName="Date_Of_Claim" />
+                <ScalarProperty Name="SewerBackupInsurance" ColumnName="SewerBackupInsurance" />
+                <ScalarProperty Name="Estimation_Per_Month" ColumnName="Estimation_Per_Month" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Aucun" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,44 @@
+﻿
+@{
+    ViewBag.Title = "Confirme";
+    Layout = "~/Views/Shared/_Insurance_Layout.cshtml";
+}
+
+    <div class="container-fluid">
+        <!-- Breadcrumbs-->
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+                <a href="../../Admin/Dashboard">Assurance</a>
+            </li>
+            <li class="breadcrumb-item active"> Obtenir Une Soumission</li>
+            <li class="breadcrumb-item active">Auto</li>
+        </ol>
+        <!-- DataTables Example -->
+        <div class="card mb-3">
+            <div class="card-header">
+                <i class="fas fa-table"></i>
+                Confirmation
+            </div>
+            <div class="card-body">
+
+                @using (Html.BeginForm("GetAutoPolicy", "Insurance", FormMethod.Get, new { enctype = "multipart/form-data" }))
+                {
+                    @Html.AntiForgeryToken()
+
+                        <div class="form-horizontal">
+                            <h4>Confirmation </h4>
+                            <hr />
+                            <h4>Le Coût de votre soumission auto est de : <span style="color:darkslateblue">@ViewBag.Price $ </span>par mois</h4>
+                            <h6>Merci, vous serez contacté(e) bientôt...</h6>
+                        </div>
+                        <br />
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-6">
+                                <input type="submit" value="Quitter" class="btn btn-success" />
+                            </div>
+                        </div>
+                }
+            </div>
+        </div>
+    </div>
+

@@ -1,0 +1,56 @@
+﻿@model IEnumerable<InsuranceDataAccess.Customers>
+
+@{
+    ViewBag.Title = "GetAutoPolicy";
+    Layout = "~/Views/Shared/_Insurance_Layout.cshtml";
+}
+
+<div class="container-fluid">
+    <!-- Breadcrumbs-->
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">Assurance</li>
+        <li class="breadcrumb-item">Clients</li>
+    </ol>
+    <!-- DataTables Example -->
+    <div class="card mb-3">
+        <div class="card-header">
+            <i class="fas fa-table"></i>
+            Details Des Polices
+            <a href="../../Insurance/index" class="btn btn-info pull-right fa fa-plus"> Obtenir une nouvelle soumission </a>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>No.</th>
+                            <th>Prénom</th>
+                            <th>Nom</th>
+                            <th>Type de police</th>
+                            <th>Editer</th>
+                            <th>Supprimer</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @{
+                            var count = 1;
+                        }
+                        @foreach (var item in Model)
+                        {
+                        <tr>
+                            <td>@count</td>
+                            <td>@item.First_Name</td>
+                            <td>@item.Last_Name</td>
+                            <td>@item.Type_Of_insurance</td>
+                            <td>@Html.ActionLink("Edit", "EditAutoPolicy", new { id = item.CustomerID })</td>
+                            <td>@Html.ActionLink("Delete", "DeleteAutoPolicy", new { id = item.CustomerID })</td>
+                        </tr>
+                            count++;
+                        }
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </div>
+</div>
