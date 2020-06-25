@@ -18,9 +18,15 @@ Une serie de formulaires pour saisir les informations du client, les information
 
 ![home page](https://user-images.githubusercontent.com/26189475/85656902-54524100-b67f-11ea-9e7b-b3f19a83b180.jpg)
 
+
 - Auto page
+
 ![Auto Page](https://user-images.githubusercontent.com/26189475/85657155-a98e5280-b67f-11ea-8f72-287b9750a7ef.jpg)
 
+
 - Coordonnées page
+
+![Contact](https://user-images.githubusercontent.com/26189475/85657223-c1fe6d00-b67f-11ea-8b66-7fc5f47fabc5.jpg)
+
 
 - Page de confirmation 
