@@ -6,7 +6,7 @@ Fiche technique :
   - Entity framework (ORM)
   - Une couche Data Access Layer : ADO.NET
   - Une couche Web service webapi 
-  - Requetes HTTP (Get, Post, Put, Delete), cela permet au client de créer une soumission, apércevoir ses soimissions, modifier et / ou supprimer une soumission.
+  - Requetes HTTP (Get, Post, Put, Delete), cela permet au client de créer une soumission, apércevoir ses soumissions, modifier et / ou supprimer une soumission.
   - Une couche Repository (à developper!!)
   
  Diagramme de classes : 
