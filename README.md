@@ -8,3 +8,4 @@
   - Requete HTTP (Get, Post, Put, Delete), cela permet au client de créer une soumission, apercevoir ses soimission, modifier et / ou supprimer une soumission.
   
  diagrmme de classe : 
+![diagramme de classe](https://user-images.githubusercontent.com/26189475/85656388-b1012c00-b67e-11ea-8645-a5e9be15da9f.jpg)
