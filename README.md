@@ -31,3 +31,6 @@ Une serie de formulaires pour saisir les informations du client, les information
 
 - Page de confirmation 
 ![final page](https://user-images.githubusercontent.com/26189475/85657487-199cd880-b680-11ea-9100-333846a44651.jpg)
+
+- le détail des polices 
+![Details](https://user-images.githubusercontent.com/26189475/85657672-54067580-b680-11ea-93c8-e6b448d2226c.jpg)
