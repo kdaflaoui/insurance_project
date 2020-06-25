@@ -1,13 +1,14 @@
 # insurance_project
 Une application qui permet au client de faire une soumission d'assurance auto ou habitation et lui donner son estimation à pyer par mois.
 Fiche technique : 
-  - Cette application est developpée en .net => ASP.NET, Bootstrap 
-  - sql server comme base de donnée
-  - Entity framework orm
-  - Web service webapi 
+  - Cette application est developpée en .NET => ASP.NET, Bootstrap 
+  - Sql server comme base de donnée
+  - Entity framework (ORM)
+  - Une couche Web service webapi 
   - Requete HTTP (Get, Post, Put, Delete), cela permet au client de créer une soumission, apercevoir ses soimission, modifier et / ou supprimer une soumission.
+  - Une couvhe Repository (à developper!!)
   
- Diagramme de classe : 
+ Diagramme de classes : 
  
 ![diagramme de classe](https://user-images.githubusercontent.com/26189475/85656388-b1012c00-b67e-11ea-8645-a5e9be15da9f.jpg)
 
